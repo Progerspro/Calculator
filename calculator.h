@@ -16,6 +16,7 @@ public:
     QLCDNumber* lcd;
     QPushButton* Create_Button(QString name);
     QString input;
+    QLabel* what;
     void solve();
 public slots:
 void button_clicked();

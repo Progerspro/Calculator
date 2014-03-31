@@ -3,8 +3,7 @@
 Calculator::Calculator(QWidget *parent) :
     QWidget(parent)
 {
-
-    about = new About;
+    what = new QLabel;
     lcd = new QLCDNumber(12);
     lcd->setSegmentStyle(QLCDNumber::Flat);
     lcd->setMinimumSize(150,50);
@@ -18,14 +17,13 @@ Calculator::Calculator(QWidget *parent) :
     };
     grid->addWidget(lcd,0,0,1,4);
     grid->addWidget(Create_Button("A"),5,0);
-
+    grid->addWidget(what,5,2.2);
     for(int f = 0; f < 4;f++)
         for(int s = 0; s < 4;s++)
         {
             grid->addWidget(Create_Button(butt[f][s]),f + 1,s);
         }
     setLayout(grid);
-    test = new QString('*');
 }
 
 
@@ -101,8 +99,8 @@ void Calculator::button_clicked()
     else
     {
         stack.push(QString().setNum(lcd->value()));
-
         stack.push(str);
+        what->setText("You choose = " "\""+str+"\"");
         input = "";
         lcd->display("0");
 
