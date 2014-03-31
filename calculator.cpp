@@ -8,21 +8,23 @@ Calculator::Calculator(QWidget *parent) :
     lcd->setSegmentStyle(QLCDNumber::Flat);
     lcd->setMinimumSize(150,50);
     QGridLayout* grid = new QGridLayout;
-    QChar butt[4][4] =
+    QVBoxLayout* vert = new QVBoxLayout;
+    QChar butt[5][5] =
     {
-        {'1','2','3','C'},
-        {'4','5','6','.'},
-        {'7','8','9','='},
-        {'+','-','*','/'},
+        {' ',' ',' ',' ',' '},
+        {' ','1','2','3','C'},
+        {' ','4','5','6','.'},
+        {' ','7','8','9','='},
+        {' ','+','-','*','/'},
     };
-    grid->addWidget(lcd,0,0,1,4);
-    grid->addWidget(Create_Button("A"),5,0);
-    grid->addWidget(what,5,2.2);
-    for(int f = 0; f < 4;f++)
-        for(int s = 0; s < 4;s++)
+    grid->addWidget(lcd,1,1,1,4);
+    vert->addWidget(what);
+    for(int f = 1; f < 5;f++)
+        for(int s = 1; s < 5;s++)
         {
             grid->addWidget(Create_Button(butt[f][s]),f + 1,s);
         }
+    grid->addLayout(vert,0,1);
     setLayout(grid);
 }
 
